@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getCfContest} from './cfApi';
-import {UpdateCfContestAction, UpdateCfFiltersAction} from './CfReducer';
+import {getCfContest} from './data/cfApi';
+import {UpdateCfContestAction, UpdateCfFiltersAction} from './data/CfReducer';
 import CfTable from './CfTable';
 import CfUser from './CfUser';
 import {FullScreenError, LoadingFadeIn, SearchInput} from './Common';
+import {preCachedContest} from "./data/cacheContest";
 
 const applicableFilters = ['category', 'search', 'filter'];
 const localFilters = ['category'];
@@ -24,6 +25,9 @@ class Codeforces extends Component {
     }
 
     componentDidMount() {
+        if (!localStorage.getItem('LOCAL_CF_CONTEST')) {
+            localStorage.setItem('LOCAL_CF_CONTEST', JSON.stringify(preCachedContest));
+        }
         this.updateContestList();
     }
 

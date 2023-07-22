@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getCfUserInfo} from './cfApi';
+import {getCfUserInfo} from './data/cfApi';
 import {
     logoutCfUsersAction,
     updateCfUserDataAction,
     updateCfUserNamesAction,
     updateCfUserStatusAction,
-} from './CfUsersReducer';
+} from './data/CfUsersReducer';
 import {TooltipBox} from './Common';
 
 const UserStatusBox = ({user, status}) => {

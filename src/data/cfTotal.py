@@ -15,7 +15,7 @@ for i in x['result']:
 print("\nLast id to be updated ",l)
 print("Total estimated time : ",(l-start+1)*3," seconds\n")
 
-f = open("cfTotalData.js","a")
+f = open("cfTotalData.js", "a")
 for id in range(start,l+1):
     print(id," is updating")
     page = requests.get("https://codeforces.com/contest/"+str(id))
